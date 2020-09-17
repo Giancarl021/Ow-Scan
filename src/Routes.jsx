@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 // import Mangas from './pages/Mangas';
@@ -10,8 +10,11 @@ import Home from './pages/Home';
 // import Donate from './pages/Donate';
 // import NotFound from './pages/NotFound';
 
+import Header from './components/Header';
+
 const Routes = () => (
-    <HashRouter>
+    <Router baseRoute={process.env.PUBLIC_URL}>
+        <Header />
         <Switch>
             <Route exact path="/" component={Home} />
             {/* <Route path="/mangas" component={Mangas} />
@@ -23,7 +26,7 @@ const Routes = () => (
 
             <Route component={NotFound} /> */}
         </Switch>
-    </HashRouter>
+    </Router>
 )
 
 export default Routes;

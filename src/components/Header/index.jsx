@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { FaDiscord } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { getSponsors } from '../../services/api'
 import './styles.css';
 
 import Logo from '../../assets/v-logo.png';
 
-const sponsors = [
-    'João',
-    'Maria',
-    'Ricardo',
-    'Pedro',
-    'Lucas'
-];
-
 const Header = () => {
+    const [sponsors, setSponsors] = useState([]);
     const [sponsor, setSponsor] = useState(0);
     const [isActive, setActive] = useState(false);
+
+    useEffect(() => {
+        getSponsors().then(setSponsors);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(changeSponsor, 3000);
@@ -24,7 +23,7 @@ const Header = () => {
             if (sponsor === sponsors.length - 1) return setSponsor(0);
             setSponsor(sponsor + 1);
         }
-    }, [sponsor]);
+    }, [sponsors.length, sponsor]);
 
     return (
         <nav className="navbar header-nav">
@@ -48,6 +47,9 @@ const Header = () => {
                     <Link className="navbar-item" to="/doar">Doar</Link>
                 </div>
                 <div className="navbar-end tagger">
+                    <a href="https://discord.gg/Fs8rcbW" target="_blank" rel="noopener noreferrer" className="navbar-item">
+                        <FaDiscord className="icon is-medium fas" />
+                    </a>
                     <span className="navbar-item tag is-primary is-large sponsor">Obrigado {sponsors[sponsor]}!</span>
                 </div>
             </div>

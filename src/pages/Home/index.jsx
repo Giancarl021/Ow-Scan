@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { getRecommendations, getMostPopular } from '../../services/api';
 import './styles.css';
 
-import Header from '../../components/Header';
-
-const recommendations = [
-    'Boku no Hero Academia',
-    'Naruto Shippuden',
-    'Dragon Ball Z',
-    'Toradora',
-    'Plastic Memories'
-];
-
 const Home = () => {
+    const [mostPopular, setMostPopular] = useState([]);
+    const [recommendations, setRecommendations] = useState([]);
     const [recommendation, setRecommendation] = useState(0);
+
+    useEffect(() => {
+        getRecommendations().then(setRecommendations);
+        getMostPopular().then(setMostPopular);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(changeSponsor, 5000);
@@ -22,12 +20,11 @@ const Home = () => {
             if (recommendation === recommendations.length - 1) return setRecommendation(0);
             setRecommendation(recommendation + 1);
         }
-    }, [recommendation]);
+    }, [recommendations.length, recommendation]);
 
 
     return (
         <>
-            <Header />
             <section className="hero is-primary recommended">
                 <div className="hero-body">
                     <div className="container">
@@ -39,7 +36,7 @@ const Home = () => {
             <section className="section">
                 <h1 className="title">Mais lidos</h1>
                 <ol className="container">
-                    {recommendations.map(r => <li key={r}>{r}</li>)}
+                    {mostPopular.map(r => <li key={r}>{r}</li>)}
                 </ol>
             </section>
         </>
