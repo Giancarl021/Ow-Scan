@@ -1,0 +1,28 @@
+.header-nav {
+    height: 4rem;
+    box-shadow: 0 0 15px #0004;
+}
+
+.navbar-item img.logo {
+    max-height: unset;
+    height: 3rem;
+    width: auto
+}
+
+.header-burger {
+    height: 4rem;
+}
+
+.navbar-end.tagger {
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-item.tag.sponsor {
+    display: flex;
+    flex: 1;
+    margin: 0.5rem 0.75rem;
+    text-align: center;
+    transition: width .14s;
+    user-select: none;
+}
