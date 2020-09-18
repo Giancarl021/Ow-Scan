@@ -14,7 +14,7 @@ const NotFound = ({ errorCode = 404, message = 'Parece que não há nada por aqu
         </section>
         <section className="section">
             <div className="container">
-                <Link to="/" class="button is-primary">Voltar à Home</Link>
+                <Link to="/" className="button is-primary">Voltar à Home</Link>
             </div>
         </section>
     </>

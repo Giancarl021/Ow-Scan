@@ -26,7 +26,7 @@ const Partnership = () => {
                         <b>Ressalvas</b>
                         <ul className="rules">
                             <li>Aceitamos Ecchi, Yuri e Yaoi</li>
-                            <li>Não é necessário número diário de visitantes</li>
+                            <li>Não é necessário um número diário de visitantes</li>
                         </ul>
                     </div>
                 </article>
