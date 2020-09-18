@@ -1,0 +1,17 @@
+ul.rules {}
+
+ul.rules li::after {
+    content: ';';
+}
+
+ul.rules li:last-child::after {
+    content: '.';
+}
+
+.level.img-links {
+    justify-content: space-evenly;
+}
+
+.level.img-links img.level-item {
+    flex-grow: 0;
+}

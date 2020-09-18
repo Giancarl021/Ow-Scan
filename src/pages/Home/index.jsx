@@ -39,6 +39,9 @@ const Home = () => {
                     {mostPopular.map(r => <li key={r}>{r}</li>)}
                 </ol>
             </section>
+            <section className="section">
+                
+            </section>
         </>
     );
 };
