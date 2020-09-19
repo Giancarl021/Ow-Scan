@@ -12,7 +12,7 @@ const Partnership = () => {
     }, [partnershipImages.length]);
 
     function handleCopyLinkClick(image) {
-        handleCopy(`<a href="http://www.ow-scan.com/" target="_blank"><img src=${image} alt="Ow Scan" border="0"/></a>`);
+        handleCopy(`<a href="http://www.ow-scan.com/" title="Ow Scan" target="_blank"><img src=${image} alt="Ow Scan" border="0"/></a>`);
     }
 
     return (
@@ -40,7 +40,7 @@ const Partnership = () => {
                 <h1 className="subtitle">Escolha um dos elementos abaixo para incorporar ao seu site/blog e contate-nos com as suas informações:</h1>
                 <div className="level img-links">
                     {partnershipImages.map((src, i) => (
-                        <img key={i} className="level-item partner-link" src={src} alt="Ow Scan" border="0" onClick={() => handleCopyLinkClick(src)}/>
+                        <img title="Ow Scan" key={i} className="level-item partner-link" src={src} alt="Ow Scan" border="0" onClick={() => handleCopyLinkClick(src)}/>
                     ))}
                 </div>
             </section>
