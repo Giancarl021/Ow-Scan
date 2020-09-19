@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { getPartnershipImages } from '../../services/api'
-import { Link } from 'react-router-dom';
+import { getPartnershipImages } from '../../services/api';
+import useCopyToClipboard from '../../hooks/useCopyToClipboard';
 import './styles.css';
 
 const Partnership = () => {
     const [partnershipImages, setPartnershipImages] = useState([]);
+    const [isCopied, handleCopy] = useCopyToClipboard(3000);
 
     useEffect(() => {
         getPartnershipImages().then(setPartnershipImages);
     }, [partnershipImages.length]);
+
+    function handleCopyLinkClick(image) {
+        handleCopy(`<a href="http://www.ow-scan.com/" target="_blank"><img src=${image} alt="Ow Scan" border="0"/></a>`);
+    }
 
     return (
         <>
@@ -34,10 +39,13 @@ const Partnership = () => {
             <section className="section">
                 <h1 className="subtitle">Escolha um dos elementos abaixo para incorporar ao seu site/blog e contate-nos com as suas informações:</h1>
                 <div className="level img-links">
-                        {partnershipImages.map((src, i) => (
-                            <img key={i} className="level-item" src={src} alt="Ow Scan" border="0" />
-                        ))}
+                    {partnershipImages.map((src, i) => (
+                        <img key={i} className="level-item partner-link" src={src} alt="Ow Scan" border="0" onClick={() => handleCopyLinkClick(src)}/>
+                    ))}
                 </div>
+            </section>
+            <section className="section">
+                <div className="notification has-text-centered is-success copied" style={{ opacity: isCopied ? '1' : '0' }}>HTML copiado</div>
             </section>
         </>
     );
