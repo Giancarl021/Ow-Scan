@@ -28,7 +28,7 @@ const Header = () => {
     return (
         <nav className="navbar header-nav">
             <div className="navbar-brand">
-                <Link to="/" className="navbar-item">
+                <Link replace to="/" onClick={() => setActive(false)}  className="navbar-item">
                     <img className="logo" src={Logo} alt="Ow!Scan" />
                 </Link>
                 <div className={'navbar-burger burger header-burger' + (isActive ? ' is-active' : '')} onClick={() => setActive(!isActive)}>
@@ -39,12 +39,12 @@ const Header = () => {
             </div>
             <div className={'navbar-menu' + (isActive ? ' is-active' : '')}>
                 <div className="navbar-start">
-                    <Link className="navbar-item" to="/mangas">Mangás</Link>
-                    <Link className="navbar-item" to="/parceria">Parceria</Link>
-                    <Link className="navbar-item" to="/recrutamento">Recrutamento</Link>
-                    <Link className="navbar-item" to="/equipe">Equipe</Link>
-                    <Link className="navbar-item" to="/contato">Contato</Link>
-                    <Link className="navbar-item" to="/doar">Doar</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/mangas">Mangás</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/parceria">Parceria</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/recrutamento">Recrutamento</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/equipe">Equipe</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/contato">Contato</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/doar">Doar</Link>
                 </div>
                 <div className="navbar-end tagger">
                     <a href="https://discord.gg/Fs8rcbW" target="_blank" rel="noopener noreferrer" className="navbar-item">
