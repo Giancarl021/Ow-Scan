@@ -6,8 +6,8 @@ import Home from './pages/Home';
 import Partnership from './pages/Partnership';
 // import Recruitment from './pages/Recruitment';
 // import Team from './pages/Team';
-// import Contact from './pages/Contact';
-// import Donate from './pages/Donate';
+import Contact from './pages/Contact';
+import Donate from './pages/Donate';
 import NotFound from './pages/NotFound';
 
 import Header from './components/Header';
@@ -19,10 +19,10 @@ const Routes = () => (
             <Route exact path="/" component={Home} />
             {/* <Route path="/mangas" component={Mangas} /> */}
             <Route path="/parceria" component={Partnership} />
-            {/*<Route path="/recrutamento" component={Recruitment} />
-            <Route path="/equipe" component={Team} />
+            {/* <Route path="/recrutamento" component={Recruitment} /> */}
+            {/* <Route path="/equipe" component={Team} /> */}
             <Route path="/contato" component={Contact} />
-            <Route path="/doar" component={Donate} />*/}
+            <Route path="/doar" component={Donate} />
 
             <Route component={NotFound} />
         </Switch>
