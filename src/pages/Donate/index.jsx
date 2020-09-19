@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
@@ -23,7 +23,7 @@ const Donate = () => {
                 </article>
             </section>
             <section className="section container">
-                <button className="button btn-stretch is-primary">Doar com PagSeguro</button>
+                <a href="https://pagseguro.uol.com.br/checkout/nc/nl/donation/sender-identification.jhtml?t=e9f02e9ff1110c3aacb8fa11f1ae33b2e8bbd6b67136405122d8020157eafa5e&e=true" target="_blank" rel="noopener noreferrer" className="button btn-stretch is-primary">Doar com PagSeguro</a>
             </section>
         </>
     );
