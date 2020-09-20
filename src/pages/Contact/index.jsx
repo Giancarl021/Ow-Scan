@@ -62,7 +62,7 @@ const Contact = () => {
                     </span>
                     <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => validateEmail(event.target.value)} />
                 </div>
-                <p className="help is-danger" style={{ display: isValidEmail ? 'none' : 'block' }}>E-mail inválido</p>
+                {isValidEmail || <p className="help is-danger">E-mail inválido</p>}
             </div>
             <div className="field">
                 <label className="label">Assunto</label>

@@ -1,5 +1,3 @@
-// Mock data
-
 const getRecommendations = async () => {
     return [
         'Boku no Hero Academia',
@@ -30,6 +28,51 @@ const getMostPopular = async () => {
     ];
 };
 
+const getRecruitmentOptions = async() => {
+    return [
+        {
+            title: 'Tradutor',
+            description: 'Irá traduzir o mangá',
+            color: 'info',
+            variations: {
+                title: 'Idioma',
+                values: [
+                    'Inglês',
+                    'Japonês',
+                    'Espanhol'
+                ]
+            }
+        },
+        {
+            title: 'Revisor',
+            description: 'Irá corrigir eventuais erros gramaticais das traduções',
+            color: 'primary'
+        },
+        {
+            title: 'Editor',
+            description: 'Irá editar as imagens do mangá',
+            color: 'warning',
+            variations: {
+                title: 'Função',
+                values: [
+                    {
+                        title: 'Ambas',
+                        description: 'Remove os textos originais e coloca os traduzidos no mangá'
+                    },
+                    {
+                        title: 'Cleaner',
+                        description: 'Remove os textos originais do mangá'
+                    },
+                    {
+                        title: 'Type',
+                        description: 'Coloca os textos traduzidos no mangá'
+                    }
+                ]
+            }
+        }
+    ];
+};
+
 const getPosts = async (page = 0) => {
     const p = [];
 
@@ -38,6 +81,10 @@ const getPosts = async (page = 0) => {
 
     return p.slice(index, index + delta);
 };
+
+const getPagSeguroLink = async () => {
+    return 'https://ow-scan.com';
+}
 
 const getPartnershipImages = async () => {
     return [
@@ -54,6 +101,8 @@ const getPartnershipImages = async () => {
 export {
     getRecommendations,
     getSponsors,
+    getPagSeguroLink,
+    getRecruitmentOptions,
     getPosts,
     getPartnershipImages,
     getMostPopular

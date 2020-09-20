@@ -1,0 +1,15 @@
+.recruitment-option {
+    opacity: .6;
+    transition: opacity .15s;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 20px;
+}
+
+.recruitment-option:hover {
+    opacity: .8;
+}
+
+.recruitment-option.recruitment-option-selected {
+    opacity: 1;
+}

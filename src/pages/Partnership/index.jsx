@@ -37,7 +37,7 @@ const Partnership = () => {
                 </article>
             </section>
             <section className="section">
-                <h1 className="subtitle">Escolha um dos elementos abaixo para incorporar ao seu site/blog e contate-nos com as suas informações:</h1>
+                <h2 className="subtitle">Escolha um dos elementos abaixo para incorporar ao seu site/blog e contate-nos com as suas informações:</h2>
                 <div className="level img-links">
                     {partnershipImages.map((src, i) => (
                         <img title="Ow Scan" key={i} className="level-item partner-link" src={src} alt="Ow Scan" border="0" onClick={() => handleCopyLinkClick(src)}/>
