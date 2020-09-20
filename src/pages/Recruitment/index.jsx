@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FaUser, FaEnvelope, FaTag } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import useIsValidEmail from '../../hooks/useIsValidEmail';
 import './styles.css';
 import { getRecruitmentOptions } from '../../services/api';
 
@@ -11,6 +12,13 @@ const Recruitment = () => {
     const [variation, setVariation] = useState(null);
     const [variationOption, setVariationOption] = useState('')
     const [nickname, setNickname] = useState('');
+    const [email, setEmail] = useState('');
+    const [isValidEmail, setValidEmail] = useIsValidEmail();
+
+    function handleEmailValidation(value) {
+        setValidEmail(value);
+        setEmail(value);
+    }
 
     useEffect(() => {
         getRecruitmentOptions().then(setOptions);
@@ -73,16 +81,25 @@ const Recruitment = () => {
                                 <input className="input" type="text" placeholder="Ninja_destruidor19" onChange={event => setNickname(event.target.value)} value={nickname} />
                             </div>
                         </div>
-                        {/* <div className="field">
-                    <label className="label">E-Mail</label>
-                    <div className="control has-icons-left">
-                        <span className="icon is-small is-left">
-                            <FaEnvelope />
-                        </span>
-                        <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => validateEmail(event.target.value)} />
-                    </div>
-                    <p className="help is-danger" style={{ display: isValidEmail ? 'none' : 'block' }}>E-mail inválido</p>
-                </div> */}
+                        <div className="field">
+                            <label className="label">E-Mail</label>
+                            <div className="control has-icons-left">
+                                <span className="icon is-small is-left">
+                                    <FaEnvelope />
+                                </span>
+                                <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => handleEmailValidation(event.target.value)} />
+                            </div>
+                            {isValidEmail || <p className="help is-danger">E-mail inválido</p>}
+                        </div>
+                        <div className="field">
+                            <label className="label">WhatsApp</label>
+                            <div className="control has-icons-left">
+                                <span className="icon is-small is-left">
+                                    <FaWhatsapp />
+                                </span>
+                                <input className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setNickname(event.target.value)} value={nickname} />
+                            </div>
+                        </div>
                     </section>
                 )
             }

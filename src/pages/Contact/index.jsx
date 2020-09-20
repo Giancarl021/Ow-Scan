@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaTag } from 'react-icons/fa';
+import useIsValidEmail from '../../hooks/useIsValidEmail';
 import './styles.css';
-
-const mailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const Contact = () => {
     const [name, setName] = useState('');
@@ -10,16 +9,11 @@ const Contact = () => {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
 
-    const [isValidEmail, setValidEmail] = useState(true);
+    const [isValidEmail, setValidEmail] = useIsValidEmail();
     const [isSubmitted, setSubmitted] = useState(false);
 
-    function validateEmail(value) {
-        if (!value || mailRegex.test(value)) {
-            setValidEmail(true);
-        } else {
-            setValidEmail(false);
-        }
-
+    function handleEmailValidation(value) {
+        setValidEmail(value);
         setEmail(value);
     }
 
@@ -60,7 +54,7 @@ const Contact = () => {
                     <span className="icon is-small is-left">
                         <FaEnvelope />
                     </span>
-                    <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => validateEmail(event.target.value)} />
+                    <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => handleEmailValidation(event.target.value)} />
                 </div>
                 {isValidEmail || <p className="help is-danger">E-mail inválido</p>}
             </div>
