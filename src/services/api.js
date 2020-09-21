@@ -37,9 +37,15 @@ const getRecruitmentOptions = async() => {
             variations: {
                 title: 'Idioma',
                 values: [
-                    'Inglês',
-                    'Japonês',
-                    'Espanhol'
+                    {
+                        title: 'Inglês',
+                    },
+                    {
+                        title: 'Japonês',
+                    },
+                    {
+                        title: 'Espanhol',
+                    }
                 ]
             }
         },

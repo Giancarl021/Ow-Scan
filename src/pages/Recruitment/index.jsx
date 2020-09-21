@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUser, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import useIsValidEmail from '../../hooks/useIsValidEmail';
 import './styles.css';
@@ -10,7 +10,6 @@ const Recruitment = () => {
     const [options, setOptions] = useState([]);
     const [option, setOption] = useState(null);
     const [variation, setVariation] = useState(null);
-    const [variationOption, setVariationOption] = useState('')
     const [nickname, setNickname] = useState('');
     const [email, setEmail] = useState('');
     const [isValidEmail, setValidEmail] = useIsValidEmail();
@@ -23,11 +22,6 @@ const Recruitment = () => {
     useEffect(() => {
         getRecruitmentOptions().then(setOptions);
     }, []);
-
-    const handleVariationOption = useCallback(value => {
-        setVariationOption(value);
-        setVariation(option && option.variations.values.find(v => typeof v === 'string' ? v === value : v.title === value));
-    }, [option]);
 
     return (
         <>
@@ -47,7 +41,7 @@ const Recruitment = () => {
                     title={opt.title}
                     description={opt.description}
                     color={opt.color}
-                    onClick={() => { setOption(opt); setVariation('') }}
+                    onClick={() => { setOption(opt); setVariation(null) }}
                 />
             ))}
             {
@@ -60,15 +54,12 @@ const Recruitment = () => {
                                 <div className="field">
                                     <label className="label">{option.variations.title}</label>
                                     <div className="select">
-                                        <select onChange={event => handleVariationOption(event.target.value)} value={variationOption}>
+                                        <select onChange={event => setVariation(option.variations.values.find(v => v.title === event.target.value))} value={variation ? variation.title : ''}>
                                             <option value="" hidden>Selecione uma opção</option>
-                                            {option.variations && option.variations.values.map((v, i) => {
-                                                const val = typeof v === 'string' ? v : v.title;
-                                                return (<option key={i} value={val}>{val}</option>);
-                                            })}
+                                            {option.variations && option.variations.values.map((v, i) => (<option key={i} value={v.title}>{v.title}</option>))}
                                         </select>
                                     </div>
-                                    {typeof variation === 'object' && (<p className="help is-info">{variation.description}</p>)}
+                                    {variation && variation.description && (<p className="help is-info">{variation.description}</p>)}
                                 </div>
                             )
                         }
