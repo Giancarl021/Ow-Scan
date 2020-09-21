@@ -10,8 +10,12 @@ const Recruitment = () => {
     const [options, setOptions] = useState([]);
     const [option, setOption] = useState(null);
     const [variation, setVariation] = useState(null);
+
     const [nickname, setNickname] = useState('');
     const [email, setEmail] = useState('');
+    const [whatsapp, setWhatsapp] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+
     const [isValidEmail, setValidEmail] = useIsValidEmail();
 
     function handleEmailValidation(value) {
@@ -64,7 +68,7 @@ const Recruitment = () => {
                             )
                         }
                         <div className="field">
-                            <label className="label">Apelido</label>
+                            <label className="label">Apelido<sup className="required-field">*</sup></label>
                             <div className="control has-icons-left">
                                 <span className="icon is-small is-left">
                                     <FaUser />
@@ -73,7 +77,7 @@ const Recruitment = () => {
                             </div>
                         </div>
                         <div className="field">
-                            <label className="label">E-Mail</label>
+                            <label className="label">E-Mail<sup className="required-field">*</sup></label>
                             <div className="control has-icons-left">
                                 <span className="icon is-small is-left">
                                     <FaEnvelope />
@@ -83,12 +87,18 @@ const Recruitment = () => {
                             {isValidEmail || <p className="help is-danger">E-mail inválido</p>}
                         </div>
                         <div className="field">
-                            <label className="label">WhatsApp</label>
+                            <label className="label">WhatsApp<sup className="required-field">*</sup></label>
                             <div className="control has-icons-left">
                                 <span className="icon is-small is-left">
                                     <FaWhatsapp />
                                 </span>
-                                <input className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setNickname(event.target.value)} value={nickname} />
+                                <input className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setWhatsapp(event.target.value)} value={whatsapp} />
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className="label">Data de Nascimento</label>
+                            <div className="control">
+                                <input className="input" type="date" onChange={event => setBirthDate(event.target.value)} value={birthDate}/>
                             </div>
                         </div>
                     </section>
