@@ -20,7 +20,7 @@ const Contact = () => {
     function resetForm() {
         setName('');
         setEmail('');
-        setValidEmail(true);
+        setValidEmail('');
         setSubject('');
         setMessage('');
     }

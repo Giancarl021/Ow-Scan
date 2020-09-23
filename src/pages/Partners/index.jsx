@@ -26,7 +26,7 @@ const Partnership = () => {
                 </div>
             </section>
             <section className="section">
-                <h1 className="title">Criar parceria</h1>
+                <h1 className="title">Virar um parceiro</h1>
                 <article className="message is-info">
                     <div className="message-header">Regras</div>
                     <div className="message-body">

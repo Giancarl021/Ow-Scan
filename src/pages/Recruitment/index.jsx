@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar } from 'react-icons/fa';
-import useIsValidEmail from '../../hooks/useIsValidEmail';
 import './styles.css';
+
+import useIsValidEmail from '../../hooks/useIsValidEmail';
 import { getRecruitmentOptions } from '../../services/api';
 
 import RecruitmentOption from '../../components/RecruitmentOption';
+import Mask from 'react-input-mask';
 
 const Recruitment = () => {
     const [options, setOptions] = useState([]);
@@ -15,6 +17,7 @@ const Recruitment = () => {
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
     const [birthDate, setBirthDate] = useState('');
+    const [phrase, setPhrase] = useState('');
 
     const [isValidEmail, setValidEmail] = useIsValidEmail();
 
@@ -92,7 +95,7 @@ const Recruitment = () => {
                                 <span className="icon is-small is-left">
                                     <FaWhatsapp />
                                 </span>
-                                <input className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setWhatsapp(event.target.value)} value={whatsapp} />
+                                <Mask mask={'+99 (99) 9 9999-9999'} maskPlaceholder={null} className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setWhatsapp(event.target.value)} value={whatsapp} />
                             </div>
                         </div>
                         <div className="field">
@@ -101,7 +104,32 @@ const Recruitment = () => {
                                 <span className="icon is-small is-left">
                                     <FaCalendar />
                                 </span>
-                                <input className="input" type="date" onChange={event => setBirthDate(event.target.value)} value={birthDate}/>
+                                <input className="input" type="date" onChange={event => setBirthDate(event.target.value)} value={birthDate} />
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className="label">Frase</label>
+                            <div className="control">
+                                <textarea className="textarea" placeholder="Steins;Gate melhor anime!" onChange={event => setPhrase(event.target.value)} value={phrase} />
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className="label">Já participei de uma SCAN<sup className="required-field">*</sup></label>
+                            <div className="control">
+                                <label className="radio">
+                                    <input type="radio" name="scan" /> Sim
+                                </label>
+                                <label className="radio">
+                                    <input type="radio" name="scan" /> Não
+                                </label>
+                            </div>
+                        </div>
+                        <div className="field is-grouped">
+                            <div className="control">
+                                <button className="button is-primary" disabled={!(nickname && email && isValidEmail)} onClick={() => { }}>Enviar</button>
+                            </div>
+                            <div className="control">
+                                <button className="button is-danger" onClick={() => { }}>Cancelar</button>
                             </div>
                         </div>
                     </section>
