@@ -40,7 +40,7 @@ const Header = () => {
             <div className={'navbar-menu' + (isActive ? ' is-active' : '')}>
                 <div className="navbar-start">
                     <Link replace className="navbar-item" onClick={() => setActive(false)} to="/mangas">Mangás</Link>
-                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/parceria">Parceria</Link>
+                    <Link replace className="navbar-item" onClick={() => setActive(false)} to="/parceiros">Parceiros</Link>
                     <Link replace className="navbar-item" onClick={() => setActive(false)} to="/recrutamento">Recrutamento</Link>
                     <Link replace className="navbar-item" onClick={() => setActive(false)} to="/equipe">Equipe</Link>
                     <Link replace className="navbar-item" onClick={() => setActive(false)} to="/contato">Contato</Link>

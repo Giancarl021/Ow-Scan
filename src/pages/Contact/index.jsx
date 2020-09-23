@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUser, FaEnvelope, FaTag } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaTag, FaDiscord, FaFacebook } from 'react-icons/fa';
 import useIsValidEmail from '../../hooks/useIsValidEmail';
 import './styles.css';
 
@@ -33,12 +33,27 @@ const Contact = () => {
     return (
         <section className="section">
             <h1 className="title">Contato</h1>
-            <article className="message is-info">
-                <div className="message-header">Servidor do Discord</div>
-                <div className="message-body">
-                    Você pode entrar no nosso servidor do Discord por <a href="https://discord.gg/Fs8rcbW" target="_blank" rel="noopener noreferrer">este link</a> ou pelo ícone no menu superior.
-                    </div>
-            </article>
+            <div className="level">
+                <div className="level-item has-text-centered">
+                    <a className="contact-item" href="mailto:contato.owscan@gmail.com">
+                        <p className="heading">Email</p>
+                        <FaEnvelope size={32} />
+                    </a>
+                </div>
+                <div className="level-item has-text-centered">
+                    <a className="contact-item" href="https://discord.gg/Fs8rcbW" target="_blank" rel="noopener noreferrer">
+                        <p className="heading">Discord</p>
+                        <FaDiscord size={32} />
+                    </a>
+                </div>
+                <div className="level-item has-text-centered">
+                    <a className="contact-item" href="https://www.facebook.com/owscan/" target="_blank" rel="noopener noreferrer">
+                        <p className="heading">Facebook</p>
+                        <FaFacebook size={32} />
+                    </a>
+                </div>
+            </div>
+            <h1 className="subtitle">Direto conosco</h1>
             <div className="field">
                 <label className="label">Nome</label>
                 <div className="control has-icons-left">

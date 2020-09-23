@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { getPartnershipImages } from '../../services/api';
+import { getPartnershipImages, getPartners } from '../../services/api';
 import useCopyToClipboard from '../../hooks/useCopyToClipboard';
 import './styles.css';
 
 const Partnership = () => {
     const [partnershipImages, setPartnershipImages] = useState([]);
+    const [partners, setPartners] = useState([]);
     const [isCopied, handleCopy] = useCopyToClipboard(3000);
 
     useEffect(() => {
         getPartnershipImages().then(setPartnershipImages);
+        getPartners().then(setPartners);
     }, [partnershipImages.length]);
 
     function handleCopyLinkClick(image) {
-        handleCopy(`<a href="http://www.ow-scan.com/" title="Ow Scan" target="_blank"><img src=${image} alt="Ow Scan" border="0"/></a>`);
+        handleCopy(`<a href="http://www.ow-scan.com/" title="Ow Scan" target="_blank" rel="noopener noreferrer"><img src=${image} alt="Ow Scan" border="0"/></a>`);
     }
 
     return (
         <>
             <section className="section">
-                <h1 className="title">Parceria</h1>
+                <h1 className="title">Nossos parceiros</h1>
+                <div class="partners">
+                    {partners.map(({ uri, name, image }, i) => (<a key={i} href={uri} target="_blank" rel="noopener noreferrer" title={name}><img src={image} width={88} height={33} alt={name} /></a>))}
+                </div>
+            </section>
+            <section className="section">
+                <h1 className="title">Criar parceria</h1>
                 <article className="message is-info">
                     <div className="message-header">Regras</div>
                     <div className="message-body">
@@ -40,7 +48,7 @@ const Partnership = () => {
                 <h2 className="subtitle">Escolha um dos elementos abaixo para incorporar ao seu site/blog e contate-nos com as suas informações:</h2>
                 <div className="level img-links">
                     {partnershipImages.map((src, i) => (
-                        <img title="Ow Scan" key={i} className="level-item partner-link" src={src} alt="Ow Scan" border="0" onClick={() => handleCopyLinkClick(src)}/>
+                        <img title="Ow Scan" key={i} className="level-item partner-link" src={src} alt="Ow Scan" border="0" onClick={() => handleCopyLinkClick(src)} />
                     ))}
                 </div>
             </section>

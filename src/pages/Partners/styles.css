@@ -21,3 +21,11 @@ ul.rules li:last-child::after {
 .partner-link {
     cursor: pointer;
 }
+
+.partners {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .7rem;
+}

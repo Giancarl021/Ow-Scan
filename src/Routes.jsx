@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 // import Mangas from './pages/Mangas';
-import Partnership from './pages/Partnership';
+import Partners from './pages/Partners';
 import Recruitment from './pages/Recruitment';
 // import Team from './pages/Team';
 import Contact from './pages/Contact';
@@ -18,7 +18,7 @@ const Routes = () => (
         <Switch>
             <Route exact path="/" component={Home} />
             {/* <Route path="/mangas" component={Mangas} /> */}
-            <Route path="/parceria" component={Partnership} />
+            <Route path="/parceiros" component={Partners} />
             <Route path="/recrutamento" component={Recruitment} />
             {/* <Route path="/equipe" component={Team} /> */}
             <Route path="/contato" component={Contact} />

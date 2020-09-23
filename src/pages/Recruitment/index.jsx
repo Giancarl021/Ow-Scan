@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar } from 'react-icons/fa';
 import useIsValidEmail from '../../hooks/useIsValidEmail';
 import './styles.css';
 import { getRecruitmentOptions } from '../../services/api';
@@ -97,7 +97,10 @@ const Recruitment = () => {
                         </div>
                         <div className="field">
                             <label className="label">Data de Nascimento</label>
-                            <div className="control">
+                            <div className="control has-icons-left">
+                                <span className="icon is-small is-left">
+                                    <FaCalendar />
+                                </span>
                                 <input className="input" type="date" onChange={event => setBirthDate(event.target.value)} value={birthDate}/>
                             </div>
                         </div>
