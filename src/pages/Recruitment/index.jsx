@@ -18,12 +18,24 @@ const Recruitment = () => {
     const [whatsapp, setWhatsapp] = useState('');
     const [birthDate, setBirthDate] = useState('');
     const [phrase, setPhrase] = useState('');
+    const [alreadyParticipatedOnSCAN, setAlreadyParticipatedOnSCAN] = useState('');
 
     const [isValidEmail, setValidEmail] = useIsValidEmail();
 
     function handleEmailValidation(value) {
         setValidEmail(value);
         setEmail(value);
+    }
+
+    function resetForm() {
+        setNickname('');
+        setEmail('');
+        setValidEmail('');
+    }
+
+    function submitForm() {
+        // setSubmitted(true);
+        resetForm();
     }
 
     useEffect(() => {
@@ -95,7 +107,7 @@ const Recruitment = () => {
                                 <span className="icon is-small is-left">
                                     <FaWhatsapp />
                                 </span>
-                                <Mask mask={'+99 (99) 9 9999-9999'} maskPlaceholder={null} className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setWhatsapp(event.target.value)} value={whatsapp} />
+                                <Mask mask="+99 (99) 9 9999-9999" maskPlaceholder={null} className="input" type="tel" placeholder="+55 (51) 9 4002-8922" onChange={event => setWhatsapp(event.target.value)} value={whatsapp} />
                             </div>
                         </div>
                         <div className="field">
@@ -117,19 +129,19 @@ const Recruitment = () => {
                             <label className="label">Já participei de uma SCAN<sup className="required-field">*</sup></label>
                             <div className="control">
                                 <label className="radio">
-                                    <input type="radio" name="scan" /> Sim
+                                    <input type="radio" name="scan" onChange={() => setAlreadyParticipatedOnSCAN('true')} value={alreadyParticipatedOnSCAN} /> Sim
                                 </label>
                                 <label className="radio">
-                                    <input type="radio" name="scan" /> Não
+                                    <input type="radio" name="scan" onChange={() => setAlreadyParticipatedOnSCAN('false')} value={alreadyParticipatedOnSCAN} /> Não
                                 </label>
                             </div>
                         </div>
                         <div className="field is-grouped">
                             <div className="control">
-                                <button className="button is-primary" disabled={!(nickname && email && isValidEmail)} onClick={() => { }}>Enviar</button>
+                                <button className="button is-primary" disabled={!(nickname && email && isValidEmail && whatsapp.replace(/\D/g, '').length === 13 && alreadyParticipatedOnSCAN !== '')} onClick={submitForm}>Enviar</button>
                             </div>
                             <div className="control">
-                                <button className="button is-danger" onClick={() => { }}>Cancelar</button>
+                                <button className="button is-danger" onClick={resetForm}>Cancelar</button>
                             </div>
                         </div>
                     </section>
