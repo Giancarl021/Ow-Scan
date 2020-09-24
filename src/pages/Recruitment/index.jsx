@@ -37,10 +37,13 @@ const Recruitment = () => {
     }
 
     function resetForm() {
+        setVariation(null);
         setNickname('');
         setEmail('');
         setValidEmail('');
         setWhatsapp('');
+        setManga('');
+        setMangas([]);
         setBirthDate('');
         setPhrase('');
         setAlreadyParticipatedOnSCAN('');
