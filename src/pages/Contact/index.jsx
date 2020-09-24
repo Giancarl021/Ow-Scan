@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaTag, FaDiscord, FaFacebook } from 'react-icons/fa';
 import useIsValidEmail from '../../hooks/useIsValidEmail';
+import useTimeoutState from '../../hooks/useTimeoutState';
 import './styles.css';
 
 const Contact = () => {
@@ -10,7 +11,7 @@ const Contact = () => {
     const [message, setMessage] = useState('');
 
     const [isValidEmail, setValidEmail] = useIsValidEmail();
-    const [isSubmitted, setSubmitted] = useState(false);
+    const [isSubmitted, setSubmitted] = useTimeoutState(false, 3000);
 
     function handleEmailValidation(value) {
         setValidEmail(value);

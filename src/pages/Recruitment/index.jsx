@@ -3,6 +3,7 @@ import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar, FaBook, FaPlusCircle, FaBoo
 import './styles.css';
 
 import useIsValidEmail from '../../hooks/useIsValidEmail';
+import useTimeoutState from '../../hooks/useTimeoutState';
 import { getRecruitmentOptions } from '../../services/api';
 
 import RecruitmentOption from '../../components/RecruitmentOption';
@@ -23,6 +24,7 @@ const Recruitment = () => {
     const [alreadyParticipatedOnSCAN, setAlreadyParticipatedOnSCAN] = useState('');
 
     const [isValidEmail, setValidEmail] = useIsValidEmail();
+    const [isSubmitted, setSubmitted] = useTimeoutState(false, 3000);
 
     const isValid = nickname &&
         email &&
@@ -50,7 +52,7 @@ const Recruitment = () => {
     }
 
     function submitForm() {
-        // setSubmitted(true);
+        setSubmitted(true);
         resetForm();
     }
 
@@ -211,6 +213,7 @@ const Recruitment = () => {
                                 <button className="button is-danger" onClick={resetForm}>Cancelar</button>
                             </div>
                         </div>
+                        <div className="notification has-text-centered is-success form-submitted" style={{ opacity: isSubmitted ? '1' : '0' }}>Formulário Enviado!</div>
                     </section>
                 )
             }
