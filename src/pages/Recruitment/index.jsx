@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar, FaBook, FaPlusCircle, FaBookOpen, FaTrashAlt } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar, FaBook, FaPlusCircle, FaBookOpen, FaTrashAlt, FaUpload } from 'react-icons/fa';
 import './styles.css';
 
 import useIsValidEmail from '../../hooks/useIsValidEmail';
@@ -179,6 +179,26 @@ const Recruitment = () => {
                                     <input type="radio" name="scan" onChange={() => setAlreadyParticipatedOnSCAN('false')} checked={alreadyParticipatedOnSCAN === 'false'} /> Não
                                 </label>
                             </div>
+                        </div>
+                        <div className="field">
+                            <label className="label">Teste</label>
+                            <a href={variation ? variation.testUri : ((option && option.testUri) || '#/NotFound' )} className={(option && (option.variations ? variation : true)) ? '' : 'disabled-link'} target="_blank" rel="noopener noreferrer">Fazer Download do Teste</a>
+                        </div>
+                        <div className="field file has-name">
+                            <label className="file-label">
+                                <input type="file" className="file-input"/>
+                                <span className="file-cta">
+                                    <span className="file-icon">
+                                        <FaUpload />
+                                    </span>
+                                    <span className="file-label">
+                                        Escolha um arquivo...
+                                    </span>
+                                </span>
+                                    <span className="file-name">
+                                        Arquivo
+                                    </span>
+                            </label>
                         </div>
                         <div className="field is-grouped">
                             <div className="control">

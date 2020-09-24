@@ -37,12 +37,15 @@ const getRecruitmentOptions = async () => {
                 title: 'Idioma',
                 values: [{
                         title: 'Inglês',
+                        testUri: '#/NotFound'
                     },
                     {
                         title: 'Japonês',
+                        testUri: '#/NotFound'
                     },
                     {
                         title: 'Espanhol',
+                        testUri: '#/NotFound'
                     }
                 ]
             }
@@ -50,7 +53,8 @@ const getRecruitmentOptions = async () => {
         {
             title: 'Revisor',
             description: 'Irá corrigir eventuais erros gramaticais das traduções',
-            color: 'primary'
+            color: 'primary',
+            testUri: 'https://drive.google.com/open?id=0B8uFpnBT5r3yY2tLMzF3cFJ5WWM'
         },
         {
             title: 'Editor',
@@ -60,15 +64,18 @@ const getRecruitmentOptions = async () => {
                 title: 'Função',
                 values: [{
                         title: 'Ambas',
-                        description: 'Remove os textos originais e coloca os traduzidos no mangá'
+                        description: 'Remove os textos originais e coloca os traduzidos no mangá',
+                        testUri: 'https://drive.google.com/file/d/1Yb6aQWGGQhFY0YLzsDU7zzZ2sNbUZqYQ/view?usp=sharing'
                     },
                     {
                         title: 'Cleaner',
-                        description: 'Remove os textos originais do mangá'
+                        description: 'Remove os textos originais do mangá',
+                        testUri: 'https://drive.google.com/open?id=1ZKOkwIK8-NN_VwgeC6y8J-BQmoUDWdsp'
                     },
                     {
                         title: 'Type',
-                        description: 'Coloca os textos traduzidos no mangá'
+                        description: 'Coloca os textos traduzidos no mangá',
+                        testUri: 'https://drive.google.com/file/d/1V7ZdVIKnI85eFgsmnY4L1ftf5cbFPIKk/view?usp=sharing'
                     }
                 ]
             }
