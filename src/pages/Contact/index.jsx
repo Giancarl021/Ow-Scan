@@ -57,29 +57,29 @@ const Contact = () => {
             <div className="field">
                 <label className="label">Nome</label>
                 <div className="control has-icons-left">
+                    <input className="input" type="text" placeholder="Fulano de Tal" onChange={event => setName(event.target.value)} value={name} />
                     <span className="icon is-small is-left">
                         <FaUser />
                     </span>
-                    <input className="input" type="text" placeholder="Fulano de Tal" onChange={event => setName(event.target.value)} value={name} />
                 </div>
             </div>
             <div className="field">
                 <label className="label">E-Mail</label>
                 <div className="control has-icons-left">
+                    <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => handleEmailValidation(event.target.value)} />
                     <span className="icon is-small is-left">
                         <FaEnvelope />
                     </span>
-                    <input className={'input' + (isValidEmail ? '' : ' is-danger')} type="email" placeholder="fulano@exemplo.com" onChange={event => setEmail(event.target.value)} value={email} onBlur={event => handleEmailValidation(event.target.value)} />
                 </div>
                 {isValidEmail || <p className="help is-danger">E-mail inválido</p>}
             </div>
             <div className="field">
                 <label className="label">Assunto</label>
                 <div className="control has-icons-left">
+                    <input className="input" type="text" placeholder="Dúvida sobre o mangá tal" onChange={event => setSubject(event.target.value)} value={subject} />
                     <span className="icon is-small is-left">
                         <FaTag />
                     </span>
-                    <input className="input" type="text" placeholder="Dúvida sobre o mangá tal" onChange={event => setSubject(event.target.value)} value={subject} />
                 </div>
             </div>
             <div className="field">

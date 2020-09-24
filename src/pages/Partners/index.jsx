@@ -21,12 +21,12 @@ const Partnership = () => {
         <>
             <section className="section">
                 <h1 className="title">Nossos parceiros</h1>
-                <div class="partners">
+                <div className="partners">
                     {partners.map(({ uri, name, image }, i) => (<a key={i} href={uri} target="_blank" rel="noopener noreferrer" title={name}><img src={image} width={88} height={33} alt={name} /></a>))}
                 </div>
             </section>
             <section className="section">
-                <h1 className="title">Virar um parceiro</h1>
+                <h1 className="title">Tornar-se parceiro</h1>
                 <article className="message is-info">
                     <div className="message-header">Regras</div>
                     <div className="message-body">
