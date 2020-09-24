@@ -89,7 +89,7 @@ const Recruitment = () => {
                             option.variations &&
                             (
                                 <div className="field">
-                                    <label className="label">{option.variations.title}</label>
+                                    <label className="label">{option.variations.title}<sup className="required-field">*</sup></label>
                                     <div className="select">
                                         <select onChange={event => setVariation(option.variations.values.find(v => v.title === event.target.value))} value={variation ? variation.title : ''}>
                                             <option value="" hidden>Selecione uma opção</option>
