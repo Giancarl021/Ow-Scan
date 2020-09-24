@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar, FaBook, FaPlusCircle } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaWhatsapp, FaCalendar, FaBook, FaPlusCircle, FaBookOpen, FaTrashAlt } from 'react-icons/fa';
 import './styles.css';
 
 import useIsValidEmail from '../../hooks/useIsValidEmail';
@@ -17,6 +17,8 @@ const Recruitment = () => {
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
     const [birthDate, setBirthDate] = useState('');
+    const [manga, setManga] = useState('');
+    const [mangas, setMangas] = useState([]);
     const [phrase, setPhrase] = useState('');
     const [alreadyParticipatedOnSCAN, setAlreadyParticipatedOnSCAN] = useState('');
 
@@ -131,21 +133,36 @@ const Recruitment = () => {
                             </div>
                         </div>
                         <div className="field">
-                        <label className="label">Mangás Favoritos</label>
+                            <label className="label">Mangás Favoritos</label>
                         </div>
                         <div className="field has-addons">
                             <div className="control has-icons-left is-expanded">
-                                <input type="text" className="input" />
+                                <input type="text" className="input" onChange={event => setManga(event.target.value)} value={manga} />
                                 <span className="icon is-small is-left">
                                     <FaBook />
                                 </span>
                             </div>
                             <div className="control">
-                                <button className="button">
+                                <button className="button" disabled={!manga} onClick={() => { setMangas([manga, ...mangas]); setManga('') }}>
                                     <FaPlusCircle />
                                 </button>
                             </div>
                         </div>
+                        <ul>
+                            {mangas.map((manga, i) => (
+                                <div key={i} className="field has-addons">
+                                    <div className="control has-icons-left is-expanded">
+                                        <input type="text" className="input is-static" readOnly={true} value={manga} />
+                                        <span className="icon is-small is-left">
+                                            <FaBookOpen />
+                                        </span>
+                                    </div>
+                                    <button className="button" disabled={!manga} onClick={() => setMangas(mangas.filter((_, index) => index !== i))}>
+                                        <FaTrashAlt />
+                                    </button>
+                                </div>
+                            ))}
+                        </ul>
                         <div className="field">
                             <label className="label">Frase</label>
                             <div className="control">
