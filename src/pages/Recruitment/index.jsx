@@ -9,6 +9,12 @@ import { getRecruitmentOptions } from '../../services/api';
 import RecruitmentOption from '../../components/RecruitmentOption';
 import Mask from 'react-input-mask';
 
+const acceptedFileMimeTypes = [
+    '.7z',
+    '.zip',
+    '.rar'
+];
+
 const Recruitment = () => {
     const [options, setOptions] = useState([]);
     const [option, setOption] = useState(null);
@@ -22,6 +28,8 @@ const Recruitment = () => {
     const [mangas, setMangas] = useState([]);
     const [phrase, setPhrase] = useState('');
     const [alreadyParticipatedOnSCAN, setAlreadyParticipatedOnSCAN] = useState('');
+    const [file, setFile] = useState(null);
+    const [filePath, setFilePath] = useState('');
 
     const [isValidEmail, setValidEmail] = useIsValidEmail();
     const [isSubmitted, setSubmitted] = useTimeoutState(false, 3000);
@@ -31,11 +39,25 @@ const Recruitment = () => {
         isValidEmail &&
         whatsapp.replace(/\D/g, '').length === 13 &&
         alreadyParticipatedOnSCAN !== '' &&
-        ((option && option.variations) ? variation : true);
+        ((option && option.variations) ? variation : true) &&
+        file;
 
     function handleEmailValidation(value) {
         setValidEmail(value);
         setEmail(value);
+    }
+
+    function handleFileInput({ target }) {
+        const [file] = target.files;
+
+        if(!acceptedFileMimeTypes.some(extension => file.name.endsWith(extension))) {
+            setFilePath('Formato de arquivo inválido');
+            setFile(null);
+            return;
+        }
+
+        setFilePath(file.name);
+        setFile(file);
     }
 
     function resetForm() {
@@ -49,6 +71,8 @@ const Recruitment = () => {
         setBirthDate('');
         setPhrase('');
         setAlreadyParticipatedOnSCAN('');
+        setFilePath('');
+        setFile(null);
     }
 
     function submitForm() {
@@ -191,7 +215,7 @@ const Recruitment = () => {
                         </div>
                         <div className="field file has-name">
                             <label className="file-label">
-                                <input type="file" className="file-input"/>
+                                <input accept={acceptedFileMimeTypes.join(',')} type="file" className="file-input" onChange={handleFileInput}/>
                                 <span className="file-cta">
                                     <span className="file-icon">
                                         <FaUpload />
@@ -201,7 +225,7 @@ const Recruitment = () => {
                                     </span>
                                 </span>
                                     <span className="file-name">
-                                        Arquivo
+                                        {filePath || 'Nenhum arquivo selecionado'}
                                     </span>
                             </label>
                         </div>
